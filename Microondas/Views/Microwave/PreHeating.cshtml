@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Microondas.Models.PreHeating>
+
+@{
+    ViewData["Title"] = "PreHeating";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.KeyText)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Second)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Power)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.KeyText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Second)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Power)
+            </td>
+            <td>
+                <a type="button" class="btn btn-primary" asp-action="Heat">Back to microwaves</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

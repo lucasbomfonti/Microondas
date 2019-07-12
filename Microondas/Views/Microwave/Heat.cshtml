@@ -1,0 +1,36 @@
+﻿@model Microondas.Models.PreHeating
+
+@{
+    ViewData["Title"] = "Heat";
+}
+
+<h4>Microwave</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Heat">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="KeyText" class="control-label"></label>
+                <input asp-for="KeyText" class="form-control" />
+                <span asp-validation-for="KeyText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Second" class="control-label"></label>
+                <input asp-for="Second" class="form-control" />
+                <span asp-validation-for="Second" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Power" class="control-label"></label>
+                <input asp-for="Power" class="form-control" />
+                <span asp-validation-for="Power" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Heat" class="btn btn-primary" />
+                <a type="button" class="btn btn-primary" asp-action="FastHeat">Fast Heat!</a>
+            </div>
+            <div class="form-group">
+            </div>
+        </form>
+    </div>
+</div>
