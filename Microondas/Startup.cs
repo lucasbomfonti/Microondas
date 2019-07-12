@@ -1,4 +1,5 @@
-﻿using Microondas.Runner;
+﻿using Microondas.Helpers;
+using Microondas.Runner;
 using Microondas.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -6,8 +7,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
-using Microondas.Models;
 
 namespace Microondas
 {
@@ -44,13 +43,13 @@ namespace Microondas
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseMiddleware(typeof(HandleExceptionHelper));
 
             app.UseMvc(routes =>
             {

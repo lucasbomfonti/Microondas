@@ -1,6 +1,6 @@
-﻿using Microondas.Models;
+﻿using Microondas.Helpers;
+using Microondas.Models;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading;
 
@@ -33,13 +33,13 @@ namespace Microondas.Services
         private void TimeValidate(decimal? second)
         {
             if (!second.HasValue || second.HasValue && second < 1 || second > 120)
-                throw new InvalidDataException("Digite um valor entre 1 a 120 segundos.");
+                throw new EntityValidationException("Digite um valor entre 1 a 120 segundos.");
         }
 
         private void PowerValidate(int? power)
         {
-            if (power.HasValue && power > 10)
-                throw new InvalidDataException("Potência inválida. Digite um valor entre 1 e 10");
+            if (power.HasValue && power < 0 || power > 10)
+                throw new EntityValidationException("Potência inválida. Digite um valor entre 1 e 10");
         }
 
         private PreHeating PreHeatingValidate(PreHeating preHeating)
